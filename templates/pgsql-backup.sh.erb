@@ -11,7 +11,7 @@ export PGOPTIONS='-c statement_timeout=0'
 export PGPASSWORD='<%= @postgres_password %>'
 <% end %>
 
-pg_dump -U <%= @postgres_user %> --format=$BKPFMT --create <%= @postgres_database %> |bzip2  > $TMPDIR/<%= @postgres_database %>.$TODAY.dump.bz
+pg_dump --host <%= @postgres_host %> -U <%= @postgres_user %> --format=$BKPFMT --create <%= @postgres_database %> |bzip2  > $TMPDIR/<%= @postgres_database %>.$TODAY.dump.bz
 
 test -f $BKPDIR/pgsql_$DAY.tar.gz && rm $BKPDIR/pgsql_$DAY.tar.gz
 tar -C $TMPDIR -c -f $BKPDIR/pgsql_$DAY.tar `ls $TMPDIR`

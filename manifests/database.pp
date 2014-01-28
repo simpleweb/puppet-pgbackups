@@ -26,6 +26,7 @@ class pgbackups::database (
   $backup_dir = '/var/backups/pgsql',
   $backup_format = 'plain',
   $user = 'postgres',
+  $postgres_host = 'localhost',
   $postgres_user = 'postgres',
   $postgres_password = undef,
   $postgres_database,
