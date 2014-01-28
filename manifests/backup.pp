@@ -33,7 +33,7 @@ class pgbackups::backup (
     owner   => $user,
     group   => $user,
     mode    => '0755',
-    require => [Package['postgresql'], User[$user]],
+    require => Class['postgresql::server'],
   }
 
   file { '/usr/local/bin/pgsql-backup.sh':
@@ -52,5 +52,4 @@ class pgbackups::backup (
     minute  => 0,
     require => [User[$user], File['/usr/local/bin/pgsql-backup.sh']],
   }
-
 }
