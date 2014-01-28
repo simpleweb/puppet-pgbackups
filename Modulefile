@@ -1,0 +1,11 @@
+name    'simpleweb-pgbackups'
+version '1.0.0'
+source 'git://github.com/simpleweb/puppet-pgbackups.git'
+author 'simpleweb'
+license 'Apache 2.0'
+summary 'Postgesql backups'
+description 'Cron task for creating scheduled Postgesql backups'
+project_page 'https://github.com/simpleweb/puppet-pgbackups'
+
+dependency 'puppetlabs/stdlib'
+dependency 'puppetlabs/postgresql'
