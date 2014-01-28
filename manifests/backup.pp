@@ -1,4 +1,4 @@
-# Class: postgresql::backup
+# Class: pgbackups::backup
 #
 # This class provides a way to set up backup for a postgresql cluster.
 # It will add a shell script based on the utility pg_dump to make
@@ -15,16 +15,14 @@
 #   ['user']          - The user to use to perform the backup.
 #                       Defaults to postgres.
 #
-# Actions:
-# - Creates and manages a postgresql cluster
-#
 # Requires:
 # - `puppetlabs/stdlib`
+# - `puppetlabs/postgresql`
 #
 # Sample Usage:
-#   include postgresql::backup
+#   include pgbackups::backup
 #
-class postgresql::backup (
+class pgbackups::backup (
   $backup_dir = '/var/backups/pgsql',
   $backup_format = 'plain',
   $user = 'postgres',
