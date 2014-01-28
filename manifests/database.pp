@@ -1,6 +1,6 @@
-# Class: pgbackups::backup
+# Class: pgbackups::database
 #
-# This class provides a way to set up backup for a postgresql cluster.
+# This class provides a way to set up backup for a postgresql database.
 # It will add a shell script based on the utility pg_dump to make
 # consitent backups each nights.
 #
@@ -20,12 +20,15 @@
 # - `puppetlabs/postgresql`
 #
 # Sample Usage:
-#   include pgbackups::backup
+#   include pgbackups::database
 #
-class pgbackups::backup (
+class pgbackups::database (
   $backup_dir = '/var/backups/pgsql',
   $backup_format = 'plain',
   $user = 'postgres',
+  $postgres_user = 'postgres',
+  $postgres_password = undef,
+  $postgres_database,
 ) {
 
   file {$backup_dir:
