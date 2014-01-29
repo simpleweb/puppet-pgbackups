@@ -50,6 +50,6 @@ class pgbackups::all (
     user    => $user,
     hour    => 2,
     minute  => 0,
-    require => [User[$user], File['/usr/local/bin/pgsql-backup.sh']],
+    require => File['/usr/local/bin/pgsql-backup.sh'],
   }
 }

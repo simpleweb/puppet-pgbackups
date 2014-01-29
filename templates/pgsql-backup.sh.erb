@@ -8,7 +8,7 @@ MONTH=$(date +%B |tr 'A-Z' 'a-z')
 TMPDIR=$(mktemp -d -p $BKPDIR) || exit 1
 export PGOPTIONS='-c statement_timeout=0'
 
-pg_dumpall -U postgres --globals-only |bzip2 > $TMPDIR/databases.$TODAY.dump.bz
+pg_dumpall -U postgres |bzip2 > $TMPDIR/databases.$TODAY.dump.bz
 
 test -f $BKPDIR/pgsql_$DAY.tar.gz && rm $BKPDIR/pgsql_$DAY.tar.gz
 tar -C $TMPDIR -c -f $BKPDIR/pgsql_$DAY.tar `ls $TMPDIR`
