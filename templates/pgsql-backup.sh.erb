@@ -7,11 +7,8 @@ DAY=$(date +%A |tr 'A-Z' 'a-z')
 MONTH=$(date +%B |tr 'A-Z' 'a-z')
 TMPDIR=$(mktemp -d -p $BKPDIR) || exit 1
 export PGOPTIONS='-c statement_timeout=0'
-<% if @postgres_password %>
-export PGPASSWORD='<%= @postgres_password %>'
-<% end %>
 
-pg_dump --host <%= @postgres_host %> -U <%= @postgres_user %> --format=$BKPFMT --create <%= @postgres_database %> |bzip2  > $TMPDIR/<%= @postgres_database %>.$TODAY.dump.bz
+pg_dumpall -U postgres --globals-only |bzip2 > $TMPDIR/databases.$TODAY.dump.bz
 
 test -f $BKPDIR/pgsql_$DAY.tar.gz && rm $BKPDIR/pgsql_$DAY.tar.gz
 tar -C $TMPDIR -c -f $BKPDIR/pgsql_$DAY.tar `ls $TMPDIR`

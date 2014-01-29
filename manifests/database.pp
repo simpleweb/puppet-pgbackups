@@ -1,4 +1,4 @@
-# Class: pgbackups::database
+# Class: pgbackups::all
 #
 # This class provides a way to set up backup for a postgresql database.
 # It will add a shell script based on the utility pg_dump to make
@@ -20,16 +20,12 @@
 # - `puppetlabs/postgresql`
 #
 # Sample Usage:
-#   include pgbackups::database
+#   include pgbackups::all
 #
-class pgbackups::database (
+class pgbackups::all (
   $backup_dir = '/var/backups/pgsql',
   $backup_format = 'plain',
   $user = 'postgres',
-  $postgres_host = 'localhost',
-  $postgres_user = 'postgres',
-  $postgres_password = undef,
-  $postgres_database,
 ) {
 
   file {$backup_dir:
