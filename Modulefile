@@ -7,5 +7,5 @@ summary 'Postgesql backups'
 description 'Cron task for creating scheduled Postgesql backups'
 project_page 'https://github.com/simpleweb/puppet-pgbackups'
 
-dependency 'puppetlabs/stdlib'
-dependency 'puppetlabs/postgresql'
+dependency 'puppetlabs/stdlib', '>= 2.2.1'
+dependency 'puppetlabs/postgresql', '>= 2.0.0'
